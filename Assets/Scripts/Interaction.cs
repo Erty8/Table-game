@@ -13,6 +13,7 @@ public class Interaction : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("adsada");
         CreateInventory();
 
     }
@@ -27,26 +28,30 @@ public class Interaction : MonoBehaviour
     private void Update()
     {
         CheckInteractables();
+       
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerStay(Collider col)
     {
         Debug.Log("touch");
         //Check for a match with the specified name on any GameObject that collides with your GameObject
-        if (collision.gameObject.tag == "Interactable")
+        if (col.gameObject.tag.Equals ("Interactable") )
         {
+            Debug.Log("found");
             //If the GameObject's name matches the one you suggest, output this message in the console
-            Debug.Log("touch");
+
             if (Input.GetKeyDown(KeyCode.E))
             {
-                collision.gameObject.transform.Rotate(180, 0, 0);
+                Debug.Log("turned");
+                col.gameObject.transform.Rotate(180, 0, 0);
+                
                 //interactable.GetInteracted(this);
             }
-            collision.gameObject.transform.Rotate(180,0,0);
+            //collision.gameObject.transform.Rotate(180,0,0);
         }
 
         //Check for a match with the specific tag on any GameObject that collides with your GameObject
-        if (collision.gameObject.tag == "MyGameObjectTag")
+        if (col.gameObject.tag == "MyGameObjectTag")
         {
             //If the GameObject has the same tag as specified, output this message in the console
             Debug.Log("Do something else here");
