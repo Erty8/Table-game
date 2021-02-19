@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
+    bool ontrigger = false;
+    Collider2D col;
     [Header("interaction")]
     public float maxInteractionDistance;
 
@@ -27,12 +29,35 @@ public class Interaction : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(ontrigger);
         CheckInteractables();
-       
+        if (ontrigger && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("turned");
+            col.gameObject.transform.Rotate(180, 0, 0);
+          
+        }
+
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Interactable")
+        {
+            ontrigger = true;
+            col = other;
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Interactable")
+        {
+            ontrigger = false;
+        }
     }
 
-    void OnTriggerStay(Collider col)
+    /*void OnTriggerStay(Collider col)
     {
+        
         Debug.Log("touch");
         //Check for a match with the specified name on any GameObject that collides with your GameObject
         if (col.gameObject.tag.Equals ("Interactable") )
@@ -56,7 +81,7 @@ public class Interaction : MonoBehaviour
             //If the GameObject has the same tag as specified, output this message in the console
             Debug.Log("Do something else here");
         }
-    }
+    }*/
 
     private void CheckInteractables()
     {
