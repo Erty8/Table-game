@@ -36,6 +36,7 @@ public class Interaction : MonoBehaviour
         turn();
         Debug.Log(ontrigger);
         //CheckInteractables();
+
         
         if (ontrigger && Input.GetKeyDown(KeyCode.E))
         {
@@ -66,17 +67,19 @@ public class Interaction : MonoBehaviour
     }
     void turn()
     {
-        if (col.gameObject.transform.localRotation.z == 180)
+        if (col.gameObject.transform.rotation.eulerAngles.z == 180)
         {
             turnbool = false;
         }
-        else if (col.gameObject.transform.rotation.z < -170)
+        /*else if (col.gameObject.transform.rotation.z < -170)
         {
             turnbool = false;
         }
+        */
         else if (turnbool)
         {
             col.gameObject.transform.rotation = Quaternion.Slerp(col.gameObject.transform.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * turnspeed);
+            
             
         }
         
