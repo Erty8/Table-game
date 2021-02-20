@@ -23,7 +23,7 @@ public class PlayerMovementSide : MonoBehaviour
         if (Input.GetKeyDown("space") && !isJumping)
         {
             Debug.Log("Space pressed");
-           // movement.y += jumpHeight;
+            // movement.y += jumpHeight;
             rb.AddForce(Vector2.up * jumpHeight);
             isJumping = true;
         }

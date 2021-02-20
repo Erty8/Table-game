@@ -20,4 +20,13 @@ public class Ballin : MonoBehaviour
     {
         gameObject.transform.position += movement * direction * Time.deltaTime;
     }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag.Equals("Ground"))
+        {
+            movement = new Vector3(0, -4, 0);
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+    }
 }

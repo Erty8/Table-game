@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - Ground
+  - Dop
   layers:
   - Default
   - TransparentFX
