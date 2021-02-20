@@ -17,18 +17,23 @@ public class PlayerMovementSide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("Vector2.up is: " + Vector2.up.magnitude);
         movement.x = Input.GetAxisRaw("Horizontal");
         if(Input.GetKeyDown("space") && !isJumping)
         {
             Debug.Log("Space pressed");
-            movement.y += jumpHeight;
+           // movement.y += jumpHeight;
+            rb.AddForce(Vector2.up * jumpHeight);
             isJumping = true;
         }
     }
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if(isJumping)
+        {
+            rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -36,6 +41,7 @@ public class PlayerMovementSide : MonoBehaviour
         if (col.gameObject.tag.Equals("Ground"))
         {
             isJumping = false;
+            Debug.Log("Now touchingg!");
         }
     }
 
