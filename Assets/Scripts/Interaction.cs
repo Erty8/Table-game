@@ -11,7 +11,12 @@ public class Interaction : MonoBehaviour
     Collider2D col;
     [Header("interaction")]
     public float maxInteractionDistance;
+<<<<<<< Updated upstream
     public float turnspeed = 100F;
+=======
+    public float turnspeed = 20F;
+    public GameObject playermodel;
+>>>>>>> Stashed changes
 
     [NonSerialized]
     public PlayerInventory inventory;
@@ -45,6 +50,7 @@ public class Interaction : MonoBehaviour
             Debug.Log("turned");
            if (col.gameObject.transform.localRotation.z < 180)
             {
+                playermodel.GetComponent<Animator>().Play("Turntable");
                 turnbool = true;
             }
             
