@@ -288,7 +288,7 @@ Transform:
   m_GameObject: {fileID: 17079313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.47, y: -2.27, z: 0}
-  m_LocalScale: {x: 0.727164, y: 0.67554605, z: 1}
+  m_LocalScale: {x: 0.363582, y: 0.39857218, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInteractionDistance: 0
-  turnspeed: 100
+  turnspeed: 10
 --- !u!114 &241490243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,7 +767,7 @@ Transform:
   m_GameObject: {fileID: 1970521869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.47, y: 2.07, z: 0}
-  m_LocalScale: {x: 0.727164, y: 0.67554605, z: 1}
+  m_LocalScale: {x: 0.5271939, y: 0.44754928, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
