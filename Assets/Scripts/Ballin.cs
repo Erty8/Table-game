@@ -12,13 +12,28 @@ public class Ballin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        movement = new Vector3(0, 0, 0);
+    }
+
+    private void startMovement()
+    {
         movement = new Vector3(ballinSpeed, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log("isTriggered child: ");
         gameObject.transform.position += movement * direction * Time.deltaTime;
+        if (gameObject.transform.parent.gameObject.GetComponent<TriggerAllBalls>().isTriggered)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            startMovement();
+            
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -29,4 +44,6 @@ public class Ballin : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }
     }
+
+    
 }
