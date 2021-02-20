@@ -8,11 +8,13 @@ public class Enemy_ai : MonoBehaviour
     public float turnspeed = 100F;
     bool ontrigger = false;
     bool turnbool = false;
+    bool stun = false;
     Collider2D col;
     Vector2 position;
     GameObject closestEnemy = null;
     private int closestEnemyIndex;
     public GameObject playermodel;
+    public Animending endingscript;
     public List<GameObject> enemies = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -80,19 +82,49 @@ public class Enemy_ai : MonoBehaviour
             Debug.Log("index="+closestEnemyIndex);
 
         }
-        else if (turnbool)
+        else if (turnbool&&!stun)
         {
-            closestEnemy.gameObject.transform.rotation = Quaternion.Slerp(col.gameObject.transform.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * turnspeed);
+            
             playermodel.GetComponent<Animator>().Play("Turntable");
-            Debug.Log("enemy turned table");
+           
+            //if (endingscript.turnfinish)
+            //{
+                closestEnemy.gameObject.transform.rotation = Quaternion.Slerp(col.gameObject.transform.rotation, 
+                    Quaternion.Euler(0, 0, 180), Time.deltaTime * turnspeed);
+                Debug.Log("enemy turned table");
+                Invoke("stunned", 2f);
+                closestEnemy.gameObject.tag = "Untagged";
+                speed = 0;
+
+            //}
         }
 
     }
     // Update is called once per frame
     void Update()
     {
+
         Debug.Log("turnbool:"+turnbool);
+        Debug.Log("endingscript.turnfinish:" + endingscript.turnfinish);
         FindClosestEnemy();
         
+    }
+    void stunned()
+    {
+        if (!stun) {
+            Debug.Log("stunned");
+            playermodel.GetComponent<Animator>().Play("Idle");
+            speed = 0;
+            stun = true;
+            Invoke("nostun",4f);
+        } 
+        
+    }
+    void nostun()
+    {
+        Debug.Log("stunned");
+        playermodel.GetComponent<Animator>().Play("Walk");
+        speed = 1.25f;
+        stun = false;
     }
 }
