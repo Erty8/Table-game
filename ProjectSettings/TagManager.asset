@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
+  - Ground
+  - Dop
   layers:
   - Default
   - TransparentFX
@@ -39,6 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2991439303
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Freground
+    uniqueID: 3582145595
     locked: 0
