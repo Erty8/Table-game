@@ -30,7 +30,12 @@ public class Interaction : MonoBehaviour
     private void Update()
     {
         Debug.Log(ontrigger);
+<<<<<<< Updated upstream
         CheckInteractables();
+=======
+        //CheckInteractables();
+        
+>>>>>>> Stashed changes
         if (ontrigger && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("turned");
@@ -54,6 +59,27 @@ public class Interaction : MonoBehaviour
             ontrigger = false;
         }
     }
+<<<<<<< Updated upstream
+=======
+    void turn()
+    {
+        if (col.gameObject.transform.localRotation.z == 180)
+        {
+            turnbool = false;
+        }
+        else if (col.gameObject.transform.rotation.z < -170)
+        {
+            turnbool = false;
+        }
+        else if (turnbool)
+        {
+            col.gameObject.transform.rotation = Quaternion.Slerp(col.gameObject.transform.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * turnspeed);
+            
+        }
+        
+    }
+    
+>>>>>>> Stashed changes
 
     /*void OnTriggerStay(Collider col)
     {
