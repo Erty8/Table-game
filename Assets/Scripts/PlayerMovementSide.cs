@@ -19,7 +19,8 @@ public class PlayerMovementSide : MonoBehaviour
     {
         Debug.Log("Vector2.up is: " + Vector2.up.magnitude);
         movement.x = Input.GetAxisRaw("Horizontal");
-        if(Input.GetKeyDown("space") && !isJumping)
+        Debug.Log("Input.GetAxisRaw('Horizontal'): " + Input.GetAxisRaw("Horizontal"));
+        if (Input.GetKeyDown("space") && !isJumping)
         {
             Debug.Log("Space pressed");
            // movement.y += jumpHeight;

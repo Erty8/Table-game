@@ -4,33 +4,20 @@ using UnityEngine;
 
 public class Ballin : MonoBehaviour
 {
-    Vector2 movement;
-    public float ballinSpeed = 5f;
+    Vector3 movement;
+    public float ballinSpeed = 1f;
     public Rigidbody2D rb;
-    public float direction = -1f;
+    public float direction;
 
     // Start is called before the first frame update
     void Start()
     {
-        movement.x = ballinSpeed;
+        movement = new Vector3(ballinSpeed, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    private void FixedUpdate()
-    {
-        if (direction == 1)
-        {
-
-            rb.MovePosition(rb.position + movement * ballinSpeed * Time.fixedDeltaTime);
-        }
-        else
-        {
-            rb.MovePosition(rb.position - movement * ballinSpeed * Time.fixedDeltaTime);
-        }
+        gameObject.transform.position += movement * direction * Time.deltaTime;
     }
 }
