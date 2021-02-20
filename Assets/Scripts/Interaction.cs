@@ -11,9 +11,11 @@ public class Interaction : MonoBehaviour
     Collider2D col;
     [Header("interaction")]
     public float maxInteractionDistance;
-    public float turnspeed = 20F;
 
-    [NonSerialized]
+    public float turnspeed = 20F;
+    public GameObject playermodel;
+
+
     public PlayerInventory inventory;
 
     private void Start()
@@ -41,8 +43,9 @@ public class Interaction : MonoBehaviour
         if (ontrigger && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("turned");
+            playermodel.GetComponent<Animator>().Play("Turntable");
             if (col.gameObject.transform.localRotation.eulerAngles.z < 180)
-            {
+            {         
                 turnbool = true;
             }
 
@@ -71,7 +74,11 @@ public class Interaction : MonoBehaviour
         {
             turnbool = false;
         }
+
         /*else if (col.gameObject.transform.rotation.z < -170)
+
+        if (col.gameObject.transform.rotation.eulerAngles.z == 180)
+
         {
             turnbool = false;
         }

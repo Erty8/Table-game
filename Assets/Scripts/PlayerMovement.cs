@@ -12,10 +12,62 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            characterscale.x = -0.15f;
+        }
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            characterscale.x = 0.15f;
+        }
+        transform.localScale = characterscale;
+        /*if (!walking && walkinputbool && endingscript.walkingfinish&& endingscript.turnfinish)
+        {
+            walking = true; 
+            playermodel.GetComponent<Animator>().Play("Walk");
+
+        }*/
+        
+        walkcheck();
+
+
     }
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
+
+    public void walkcheck() {
+        if (endingscript.turnfinish && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+          {
+            walkinputbool = true;
+            if (endingscript.turnfinish)
+            {
+                playermodel.GetComponent<Animator>().Play("Walk");
+            }
+        }
+        else if (!endingscript.turnfinish  && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        {
+            walkinputbool = false;
+            if (endingscript.turnfinish)
+            {
+                //playermodel.GetComponent<Animator>().Play("Walk");
+            }
+        }
+        else
+        {
+            walkinputbool = false;
+            walking = false;
+            if (endingscript.turnfinish)
+            {
+                playermodel.GetComponent<Animator>().Play("Idle");
+            }
+           
+        }
+
+    }
+
+
 }
