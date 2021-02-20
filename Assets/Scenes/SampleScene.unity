@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInteractionDistance: 0
+  turnspeed: 10
 --- !u!114 &241490243
 MonoBehaviour:
   m_ObjectHideFlags: 0
