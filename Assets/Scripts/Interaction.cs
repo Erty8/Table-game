@@ -6,9 +6,12 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     bool ontrigger = false;
+    bool turnbool = false;
+    Transform colrotation;
     Collider2D col;
     [Header("interaction")]
     public float maxInteractionDistance;
+    public float turnspeed = 100F;
 
     [NonSerialized]
     public PlayerInventory inventory;
@@ -26,20 +29,22 @@ public class Interaction : MonoBehaviour
         inventory.hasBottle = false;
         inventory.barrelcolor = Color.black;
     }
-
+        
     private void Update()
     {
+        Debug.Log("turnbool:"+turnbool);
+        turn();
         Debug.Log(ontrigger);
-<<<<<<< Updated upstream
-        CheckInteractables();
-=======
         //CheckInteractables();
         
->>>>>>> Stashed changes
         if (ontrigger && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("turned");
-            col.gameObject.transform.Rotate(180, 0, 0);
+           if (col.gameObject.transform.localRotation.z < 180)
+            {
+                turnbool = true;
+            }
+            
           
         }
 
@@ -59,8 +64,6 @@ public class Interaction : MonoBehaviour
             ontrigger = false;
         }
     }
-<<<<<<< Updated upstream
-=======
     void turn()
     {
         if (col.gameObject.transform.localRotation.z == 180)
@@ -79,7 +82,6 @@ public class Interaction : MonoBehaviour
         
     }
     
->>>>>>> Stashed changes
 
     /*void OnTriggerStay(Collider col)
     {
