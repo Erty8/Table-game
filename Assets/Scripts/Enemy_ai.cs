@@ -11,26 +11,35 @@ public class Enemy_ai : MonoBehaviour
     Collider2D col;
     Vector2 position;
     GameObject closestEnemy = null;
+    private int closestEnemyIndex;
+    public List<GameObject> enemies = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
         position = gameObject.transform.position;
+        FindallEnemies();
+    }
+    void FindallEnemies()
+    {
+        
+        enemies.AddRange(GameObject.FindGameObjectsWithTag("Interactable"));
     }
     
     void FindClosestEnemy()
     {
-        List<GameObject> enemies = new List<GameObject>();
-        enemies.AddRange(GameObject.FindGameObjectsWithTag("Interactable"));
-        
+       
         float distanceToClosestEnemy = Mathf.Infinity;
 
-        foreach (GameObject currentEnemy in enemies)
+        for (int i = 0; i<enemies.Count;i++) 
         {
+            GameObject currentEnemy = enemies[i];
             float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
             if (distanceToEnemy < distanceToClosestEnemy)
             {
                 distanceToClosestEnemy = distanceToEnemy;
                 closestEnemy = currentEnemy;
+                closestEnemyIndex = i;
+                Debug.Log("index="+closestEnemyIndex);
             }
         }
         transform.position = Vector2.MoveTowards(transform.position, closestEnemy.transform.position, speed*Time.deltaTime);
@@ -47,8 +56,9 @@ public class Enemy_ai : MonoBehaviour
         if (other.gameObject.tag == "Interactable")
         {
             ontrigger = true;
-            Debug.Log(ontrigger);
+            Debug.Log("ontrigger:"+ontrigger);
             col = other;
+            turnbool = true;
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -60,9 +70,12 @@ public class Enemy_ai : MonoBehaviour
     }
     void turn()
     {
-        if (closestEnemy.gameObject.transform.localRotation.z == 180)
+        if (closestEnemy.gameObject.transform.localRotation.eulerAngles.z == 180)
         {
             turnbool = false;
+            enemies.RemoveAt(closestEnemyIndex);
+            Debug.Log("index="+closestEnemyIndex);
+
         }
         else if (turnbool)
         {
@@ -74,7 +87,7 @@ public class Enemy_ai : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(turnbool);
+        Debug.Log("turnbool:"+turnbool);
         FindClosestEnemy();
         
     }
