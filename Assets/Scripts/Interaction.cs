@@ -15,7 +15,6 @@ public class Interaction : MonoBehaviour
     public float turnspeed = 20F;
     public GameObject playermodel;
 
-
     public PlayerInventory inventory;
 
     private void Start()
@@ -31,25 +30,28 @@ public class Interaction : MonoBehaviour
         inventory.hasBottle = false;
         inventory.barrelcolor = Color.black;
     }
-
+        
     private void Update()
     {
-        Debug.Log("turnbool:" + turnbool);
+        Debug.Log("turnbool:"+turnbool);
         turn();
         Debug.Log(ontrigger);
         //CheckInteractables();
-
-
+        if (col.gameObject.transform.localRotation.z == 180)
+        {
+            turnbool = false;
+        }
         if (ontrigger && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("turned");
             playermodel.GetComponent<Animator>().Play("Turntable");
-            if (col.gameObject.transform.localRotation.eulerAngles.z < 180)
-            {         
+            if (col.gameObject.transform.localRotation.z < 180)
+            {
+                
                 turnbool = true;
             }
-
-
+            
+          
         }
 
     }
@@ -70,28 +72,16 @@ public class Interaction : MonoBehaviour
     }
     void turn()
     {
-        if (col.gameObject.transform.rotation.eulerAngles.z == 180)
-        {
-            turnbool = false;
-        }
-
-        /*else if (col.gameObject.transform.rotation.z < -170)
-
-        if (col.gameObject.transform.rotation.eulerAngles.z == 180)
-
-        {
-            turnbool = false;
-        }
-        */
-        else if (turnbool)
+        if (turnbool)
         {
             col.gameObject.transform.rotation = Quaternion.Slerp(col.gameObject.transform.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * turnspeed);
-
-
         }
-
+        if (col.gameObject.transform.rotation.eulerAngles.z == 180)
+        {
+            turnbool = false;
+        }
     }
-
+    
 
     /*void OnTriggerStay(Collider col)
     {

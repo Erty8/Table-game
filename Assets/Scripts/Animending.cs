@@ -32,6 +32,7 @@ public class Animending : MonoBehaviour
     {
         turnfinish = true;
         Invoke("Turningfinishfalse", 1f);
+
     }
     void Turningfinishfalse()
     {

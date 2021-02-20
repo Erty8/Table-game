@@ -12,12 +12,14 @@ public class Enemy_ai : MonoBehaviour
     Vector2 position;
     GameObject closestEnemy = null;
     private int closestEnemyIndex;
+    public GameObject playermodel;
     public List<GameObject> enemies = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
         position = gameObject.transform.position;
         FindallEnemies();
+        playermodel.GetComponent<Animator>().Play("Walk");
     }
     void FindallEnemies()
     {
@@ -40,12 +42,13 @@ public class Enemy_ai : MonoBehaviour
                 closestEnemy = currentEnemy;
                 closestEnemyIndex = i;
                 Debug.Log("index="+closestEnemyIndex);
+                Debug.Log(enemies);
             }
         }
         transform.position = Vector2.MoveTowards(transform.position, closestEnemy.transform.position, speed*Time.deltaTime);
         if (ontrigger)
         {
-            speed = 0.01f;
+            //speed = 0.01f;
             turn();
         }
        
@@ -80,6 +83,7 @@ public class Enemy_ai : MonoBehaviour
         else if (turnbool)
         {
             closestEnemy.gameObject.transform.rotation = Quaternion.Slerp(col.gameObject.transform.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * turnspeed);
+            playermodel.GetComponent<Animator>().Play("Turntable");
             Debug.Log("enemy turned table");
         }
 
