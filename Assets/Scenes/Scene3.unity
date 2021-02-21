@@ -1703,17 +1703,14 @@ MonoBehaviour:
   dialogue:
     name: Table
     sentences:
-    - "Ay sap\u0131k ayaklar\u0131ma m\u0131 bak\u0131yosun sen benim."
-    - "Neyse ge\xE7elim bu konular\u0131..."
+    - "Be\u011Fendin mi ayaklar\u0131m\u0131, yak\u0131\u015F\u0131kl\u0131 \u015Fey
+      seni"
     answers1:
-    - Hmm
-    - Hmmmmmmmmm
+    - "\xD6yleyimdir bebe\u011Fim hadi bana gidelim"
     answers2:
-    - dsa
-    - dsadsadd
+    - Benimle evlenir misin
     answers3:
-    - dssdd
-    - dsdss
+    - "Ama sen \xE7irkinsin"
 --- !u!114 &1648109699
 MonoBehaviour:
   m_ObjectHideFlags: 0
