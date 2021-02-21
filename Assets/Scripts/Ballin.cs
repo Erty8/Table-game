@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ballin : MonoBehaviour
 {
@@ -45,6 +46,10 @@ public class Ballin : MonoBehaviour
         {
             movement = new Vector3(0, -4, 0);
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+        if (col.gameObject.tag.Equals("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
