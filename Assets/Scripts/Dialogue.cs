@@ -7,5 +7,10 @@ public class Dialogue
     public string name;
     [TextArea(3,10)] 
     public string[] sentences;
+    public string[] answers1;
+    public string[] answers2;
+    public string[] answers3;
+    
+
     
 }
