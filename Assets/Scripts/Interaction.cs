@@ -49,6 +49,11 @@ public class Interaction : MonoBehaviour
             {
                 
                 turnbool = true;
+                if (col.gameObject.transform.parent.tag.Equals("TableCounter"))
+                {
+                    col.gameObject.transform.parent.GetComponent<HowMuchTablesHasTurned>().turnedTableCount++;
+                    Debug.Log("Turned Table Count: " + col.gameObject.transform.parent.GetComponent<HowMuchTablesHasTurned>().turnedTableCount);
+                }
             }
             
           
