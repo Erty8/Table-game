@@ -329,20 +329,13 @@ MonoBehaviour:
   dialogue:
     name: Table
     sentences:
-    - I need to think about this....
-    - Are you sure about this ?
+    - "Hi\xE7 sormicaks\u0131n sand\u0131m!"
     answers1:
-    - asdsad
-    - sadas
-    - dsadd
+    - O zaman evlen benimle!
     answers2:
-    - dsadsa
-    - fdfdsf
-    - fdsfsd
+    - "Can\u0131m benim, mutlu olaca\u011F\u0131z!"
     answers3:
-    - fdsfdsf
-    - fdsfds
-    - fdsfsd
+    - "Hahahaaa kand\u0131rd\u0131m seni!"
 --- !u!114 &210315640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,7 +519,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Will you be my *Ahem* wife ?
+  m_Text: "Ho\u015F masas\u0131n, benim olur musun?"
 --- !u!222 &254715451
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1277,7 +1270,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You fight like a dairy Farmer!
+  m_Text: "Ne g\xFCzel devirdim seni, ehe!"
 --- !u!222 &1388394726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1906,19 +1899,14 @@ MonoBehaviour:
   dialogue:
     name: Table
     sentences:
-    - How approp
+    - "Ne ar\u0131yosun burada? \xC7\u0131k git buradan, can\u0131m\u0131 yakt\u0131n
+      benim!"
     answers1:
-    - sadasdd
-    - dsadsa
-    - dsdasdsad
+    - Geber!
     answers2:
-    - fsdffs
-    - fsdfdfs
-    - dfsd
+    - "Olmayacak hi\xE7bir \u015Fey aram\u0131zda!"
     answers3:
-    - dsadsa
-    - dsadsa
-    - dasdsa
+    - Seni yakacam!
 --- !u!114 &1715580899
 MonoBehaviour:
   m_ObjectHideFlags: 0
