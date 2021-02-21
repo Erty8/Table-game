@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Dop
   - TableCounter
+  - Cowboy
   layers:
   - Default
   - TransparentFX

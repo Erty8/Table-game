@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovementSide : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class PlayerMovementSide : MonoBehaviour
     public Rigidbody2D rb;
     public float jumpHeight = 10f;
     private bool isJumping = false;
+    public GameObject winpanel;
 
 
     // Start is called before the first frame update
@@ -43,6 +45,14 @@ public class PlayerMovementSide : MonoBehaviour
         {
             isJumping = false;
             Debug.Log("Now touchingg!");
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Cowboy")
+        {
+            winpanel.gameObject.SetActive(true);
         }
     }
 
