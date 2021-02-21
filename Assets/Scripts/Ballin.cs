@@ -49,6 +49,7 @@ public class Ballin : MonoBehaviour
         }
         if (col.gameObject.tag.Equals("Player"))
         {
+            col.gameObject.GetComponent<AudioSource>().Play(0);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
