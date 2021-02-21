@@ -1671,7 +1671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnedTableCount: 0
-  triggerCount: 14
+  triggerCount: 7
 --- !u!1 &1631464035
 GameObject:
   m_ObjectHideFlags: 0
