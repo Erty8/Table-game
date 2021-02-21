@@ -21,9 +21,6 @@ public class TableMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        Debug.Log("endingscript" + endingscript);
-        Debug.Log("walking" +walkinputbool);
         Vector2 characterscale = transform.localScale;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -43,10 +40,11 @@ public class TableMovement : MonoBehaviour
 
         }*/
         
-        walkcheck();
+        //walkcheck();
+        Debug.Log("ontrigger: " + ontrigger);
         if (ontrigger && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("turned");
+            Debug.Log("Player turned");
             
             if (col.gameObject.transform.localRotation.z < 180)
             {
@@ -61,15 +59,36 @@ public class TableMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag.Equals("Player"))
         {
+            Debug.Log("Çarpıstık Trigger ");
             ontrigger = true;
             col = other;
         }
     }
+
+    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            Debug.Log("Çarpıstık Collider");
+            ontrigger = true;
+            col = collision.collider;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            ontrigger = false;
+        }
+    }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag.Equals("Player"))
         {
             ontrigger = false;
         }
