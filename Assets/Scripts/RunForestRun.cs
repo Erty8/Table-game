@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RunForestRun : MonoBehaviour
 {
@@ -54,8 +55,11 @@ public class RunForestRun : MonoBehaviour
                 else
                 {
                     movement.x = 0;
+                    
                     isOverPhase2 = true;
                     startPhae1 = false;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+
                 }
             }
 
