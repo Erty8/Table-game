@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TableMovement : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class TableMovement : MonoBehaviour
     bool turnbool = false;
     public GameObject playermodel;
     public Animending endingscript;
+    public Enemy_ai aiscript;
     Collider2D col;
 
     // Update is called once per frame
@@ -55,6 +57,7 @@ public class TableMovement : MonoBehaviour
 
         }
         turn();
+        Debug.Log("aiscript.stun==" + aiscript.stun);
 
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -95,13 +98,17 @@ public class TableMovement : MonoBehaviour
     }
     void turn()
     {
-        if (turnbool)
-        {
-            col.gameObject.transform.rotation = Quaternion.Slerp(col.gameObject.transform.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * turnspeed);
-        }
-        if (col.gameObject.transform.rotation.eulerAngles.z == 180)
-        {
-            turnbool = false;
+        Debug.Log("aiscript.stun==" + aiscript.stun);
+        if (aiscript.stun) {
+            if (turnbool)
+            {
+                col.gameObject.transform.rotation = Quaternion.Slerp(col.gameObject.transform.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * turnspeed);
+            }
+            if (col.gameObject.transform.rotation.eulerAngles.z == 180)
+            {
+                turnbool = false;
+                Invoke("ChangeScene", 1f);
+            }
         }
     }
     void FixedUpdate()
@@ -138,5 +145,8 @@ public class TableMovement : MonoBehaviour
         }
 
     }
-
+    void ChangeScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

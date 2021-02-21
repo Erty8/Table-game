@@ -8,7 +8,7 @@ public class Enemy_ai : MonoBehaviour
     public float turnspeed = 100F;
     bool ontrigger = false;
     bool turnbool = false;
-    bool stun = false;
+    public bool stun = false;
     Collider2D col;
     Vector2 position;
     GameObject closestEnemy = null;

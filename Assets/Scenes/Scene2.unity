@@ -1012,6 +1012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.25
   turnspeed: 200
+  stun: 0
   playermodel: {fileID: 801572406}
   endingscript: {fileID: 801572408}
   enemies: []
@@ -1066,6 +1067,7 @@ MonoBehaviour:
   turnspeed: 100
   playermodel: {fileID: 0}
   endingscript: {fileID: 0}
+  aiscript: {fileID: 1601298296}
 --- !u!1001 &1899263405
 PrefabInstance:
   m_ObjectHideFlags: 0
