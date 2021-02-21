@@ -12,6 +12,6 @@ public class SceneChange : MonoBehaviour
 
     public void Loadscene()
     {
-        Invoke("SceneChanger", 2f);
+        Invoke("SceneChanger", 4f);
     }
 }

@@ -598,7 +598,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How appropriate. You fight like a cow!
+  m_Text: "Hey yak\u0131\u015F\u0131kl\u0131 naber?"
 --- !u!222 &347793091
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2195,6 +2195,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1715580902}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1715580900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2245,6 +2256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overpanel: {fileID: 1055469905}
+  dialoguepanel: {fileID: 1549740098}
 --- !u!1 &1834350123
 GameObject:
   m_ObjectHideFlags: 0
